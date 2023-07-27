@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+        .container{
+                text-align: center;
+                background-color: rgb(250, 67, 67);
+                color:white;
+                height:95vh;
+                font-family: 'Baloo 2', cursive;
+                     }
+ 
+            hr{
+            width: 200px;
+        }
+        button{
+            background-color: orange;
+            color:rgb(255, 255, 255);
+            border:none;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 28px;
+        }
+      p{
+        font-size: 35px;
+        color:white;
+      }
+
+     
+    </style>
+</head>
+<body>
+   
+  
+    <div class="container">
+        <div class="content">
+            <div class="heading">
+                <h1>Celebrity</h1>
+            </div>
+            <hr>
+           <div class="para">
+            <p id="ce"></p>
+            <p id="cel"></p>
+            <p id="celi"></p>
+            <p id="celib"></p>
+           </div>
+          
+            <div class="button">
+                <button id="getcelebrity">Get Celebrity Information</button>
+            </div>
+        </div>
+        </div>
+             
+       
+       
+    <script>
+let celebrityBtn=document.getElementById("getcelebrity");
+let user=prompt("Enter Celebrity Name Of Your Choice")
+const celebrity=async()=>{
+    let limit=10;
+    const apikey=   " aYZOHwAHzHHf5AqcZCO5Lw==82aft9nSkdQlwYA3";
+    const options={
+        method:"Get",
+       headers:{'X-Api-Key':apikey},
+    }
+    const res=await fetch(` https://api.api-ninjas.com/v1/celebrity?name=${user}`,options);
+    const data=await res.json();
+    console.log(data);
+ce.innerHTML=data[0].name;
+cel.innerHTML=data[0].gender;
+celi.innerHTML=data[0].nationality;
+celib.innerHTML=data[0].occupation;
+}
+celebrityBtn.addEventListener("click",celebrity)
+
+
+    </script>
+</body>
+</html>
